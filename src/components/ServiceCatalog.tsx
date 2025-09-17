@@ -1,5 +1,5 @@
 // src/components/ServiceCatalog.tsx
-import { services, type Service } from '../mockData';
+import type { Service } from '../mockData';
 type ServiceCatalogProps = {
   isOpen: boolean;
   onClose: () => void;

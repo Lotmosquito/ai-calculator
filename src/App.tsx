@@ -13,7 +13,9 @@ function App() {
   const [planet, setPlanet] = useState<Planet>('earth');
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [quoteItems, setQuoteItems] = useState<Service[]>([]);
-  const [allServices, setAllServices] = useState<Service[]>(services);
+  
+  // УБИРАЕМ useState, просто используем импортированный массив
+  const allServices = services;
 
   const handlePlanetSelect = (selectedPlanet: Planet) => {
     setPlanet(selectedPlanet);
