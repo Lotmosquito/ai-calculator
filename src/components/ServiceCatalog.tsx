@@ -1,6 +1,5 @@
 // src/components/ServiceCatalog.tsx
-import { Service } from '../services/airtable';
-
+import { services, type Service } from '../mockData';
 type ServiceCatalogProps = {
   isOpen: boolean;
   onClose: () => void;

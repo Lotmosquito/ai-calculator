@@ -1,5 +1,5 @@
 // src/components/QuoteBuilder.tsx
-import { Service } from '../services/airtable';
+import type { Service } from '../mockData';
 
 type QuoteBuilderProps = {
   planet: 'earth' | 'mars';

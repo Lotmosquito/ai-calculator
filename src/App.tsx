@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { PlanetSelector } from './components/PlanetSelector';
 import { QuoteBuilder } from './components/QuoteBuilder';
 import { ServiceCatalog } from './components/ServiceCatalog';
-import { Service, fetchServices } from './services/airtable';
+// ИЗМЕНЕНИЕ: импортируем и данные, и тип из mockData
+import { services, type Service } from './mockData'; 
 
 type Step = 'planet_selection' | 'quote_builder';
 type Planet = 'earth' | 'mars';
@@ -13,23 +14,13 @@ function App() {
   const [planet, setPlanet] = useState<Planet>('earth');
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [quoteItems, setQuoteItems] = useState<Service[]>([]);
-  const [allServices, setAllServices] = useState<Service[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  
+  // ИЗМЕНЕНИЕ: Убираем логику загрузки, просто используем mockData
+  const [allServices, setAllServices] = useState<Service[]>(services);
+  const [isLoading, setIsLoading] = useState(false); // Загрузки нет
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadServices = async () => {
-      try {
-        const servicesFromAirtable = await fetchServices();
-        setAllServices(servicesFromAirtable);
-      } catch (err) {
-        setError('Не удалось загрузить каталог услуг.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadServices();
-  }, []);
+  // useEffect больше не нужен для загрузки
 
   const handlePlanetSelect = (selectedPlanet: Planet) => {
     setPlanet(selectedPlanet);
